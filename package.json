@@ -1,12 +1,13 @@
 {
-  "name": "vue3-json-schema-form",
-  "version": "0.1.0",
-  "private": true,
+  "name": "tianhou_action_test",
+  "version": "0.3.0",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name myLib src/main.ts",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -36,6 +37,11 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": ["dist"],
+  "main": "dist/myLib.common.js",
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
       "vue-cli-service lint",
